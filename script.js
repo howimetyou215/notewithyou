@@ -68,7 +68,7 @@ async function initial(){
                     </div>`;
                     addBox.insertAdjacentHTML("afterend", liLoading);     
                 
-   await fetch('https://notebackend-21.herokuapp.com/employees')
+   await fetch('https://backendnote.onrender.com/employees')
   .then(response => response.json())
 //   .then(async e=>{await sleep(2000)
 // return e})
@@ -110,7 +110,7 @@ async function deleteNote(noteId) {
     let index = findindex(notes, noteId)
     console.log("index ", index)
     notes.splice(index, 1);
-    await fetch('https://notebackend-21.herokuapp.com/employee/'+noteId, {
+    await fetch('https://backendnote.onrender.com/employee/'+noteId, {
             method: 'DELETE', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -163,7 +163,7 @@ addBtn.addEventListener("click", async (e) => {
         let noteInfo = {title, description, date: `${month} ${day}, ${year}`}
         if(!isUpdate) {
             notes.push(noteInfo);
-            await fetch('https://notebackend-21.herokuapp.com/employee', {
+            await fetch('https://backendnote.onrender.com/employee', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -184,7 +184,7 @@ addBtn.addEventListener("click", async (e) => {
             isUpdate = false;
             let index = findindex(notes,updateId)
             notes[index] = noteInfo;
-            await fetch('https://notebackend-21.herokuapp.com/employee/'+updateId, {
+            await fetch('https://backendnote.onrender.com/employee/'+updateId, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
